@@ -1,10 +1,22 @@
+// ROCK
+// PAPER
+// SCISSORS
 
 
+
+let playerScore = 0;
+let computerScore = 0;
+let rounds = 0;
+
+
+
+function display(Item, ID) {
+    document.getElementById(ID).innerHTML = Item;
+}
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
-
 
 function getComputerChoice() {
 switch (getRandomInt(3)) {
@@ -75,14 +87,19 @@ function gameRound() {
             console.log("error");
     }
 }
-let playerScore = 0;
-let computerScore = 0;
-let rounds = 0;
 
-while (rounds < 1) {
-gameRound();
-rounds ++;
+
+//GAMELOOP
+
+while (rounds < 5) {
+    display(rounds + 1, "round");
+    gameRound();
+    display(playerScore, "playerScore");
+    display(computerScore, "computerScore");
+    rounds ++;
 }
+
+//GAMELOOP
 
 function endScore(playerScore, computerScore) {
     if (playerScore > computerScore) {
