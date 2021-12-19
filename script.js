@@ -87,10 +87,10 @@ function gameRound(playerChoise) {
 
 function endScore() {
     if (playerScore > computerScore) {
-        window.alert("WINNNER!");
+        window.alert(playerScore + " : " + computerScore + " WINNNNER!");
     }
     else if (playerScore < computerScore) {
-        window.alert("LOSER!");
+        window.alert(playerScore + " : " + computerScore + " LOOOSER!");
     }
     else if ((playerScore === computerScore)) {
         window.alert("TIE!");
@@ -126,8 +126,8 @@ const buttons = document.querySelectorAll("button");
 
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
-        gameRound(button.id);
         round += 1;
+        gameRound(button.id);
         refresh();
         calcWinner();
     });
