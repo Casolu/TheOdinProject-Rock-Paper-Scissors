@@ -1,0 +1,41 @@
+
+
+
+body {
+    color: white;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+    padding: 32px 64px;
+    align-items: center;
+}
+
+.score {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    text-align: center;
+}
+
+button {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+}
+
+button:hover {
+    background-color: gray;
+    color: black;
+}
+
+
