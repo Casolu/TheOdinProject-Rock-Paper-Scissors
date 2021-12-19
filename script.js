@@ -6,12 +6,13 @@
 
 let playerScore = 0;
 let computerScore = 0;
-let rounds = 0;
+let round = 1;
+//let maxRounds = 5;
 
 
 
 function display(Item, ID) {
-    document.getElementById(ID).innerHTML = Item;
+    document.getElementById(ID).innerText = Item;
 }
 
 function getRandomInt(max) {
@@ -26,15 +27,11 @@ switch (getRandomInt(3)) {
         return "Paper";
     case 2:
         return "Scissors";
-    }
-}
+    };
+};
 
-function getPlayerChoice() {
-    return window.prompt("Rock, Paper, Scissors?");
-}
-
-function gameRound() {
-    switch (getPlayerChoice().toLowerCase()) {
+function gameRound(playerChoise) {
+    switch (playerChoise) {
         case "rock":
             switch (getComputerChoice()) {
                 case "Rock":
@@ -82,42 +79,63 @@ function gameRound() {
                     break;
                 }
             break;
-        
+                
         default:
             console.log("error");
-    }
-}
+    };
+};
 
-
-//GAMELOOP
-
-while (rounds < 5) {
-    display(rounds + 1, "round");
-    gameRound();
-    display(playerScore, "playerScore");
-    display(computerScore, "computerScore");
-    rounds ++;
-}
-
-//GAMELOOP
-
-function endScore(playerScore, computerScore) {
+function endScore() {
     if (playerScore > computerScore) {
-        console.log("WINNNER!");
+        window.alert("WINNNER!");
     }
     else if (playerScore < computerScore) {
-        console.log("LOSER!");
+        window.alert("LOSER!");
     }
     else if ((playerScore === computerScore)) {
-        console.log("TIE!");
+        window.alert("TIE!");
     }
     else {
-        console.log("Scoring error!");
-    }
-}
+        window.alert("Scoring error!");
+    };
+};
+              
+const refresh = () => {
+    display(round, "round");
+    display(playerScore, "playerScore");
+    display(computerScore, "computerScore");    
+} 
 
-console.log("PLAYER: " + playerScore);
-console.log ("COMPUTER: " + computerScore);
-endScore(playerScore, computerScore);                   
+const calcWinner = () => {
+    if (playerScore == 5 || computerScore == 5) {
+        endScore();
+        restart();
+    };
+};
+
+const restart = () => {
+    playerScore = 0;
+    computerScore = 0;
+    round = 1;
+    refresh();
+};
+
+
+
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        gameRound(button.id);
+        round += 1;
+        refresh();
+        calcWinner();
+    });
+
+});
+
+
+
+refresh();
 
 
